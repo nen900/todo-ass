@@ -13,7 +13,7 @@ function Home() {
 
     useEffect(() => {
         if (token) {
-            axios.get("http://localhost:8000/get", {
+            axios.get("https://mytodo-ass.onrender.com/get", {
                 headers: {
                     Authorization: `Bearer ${token}` 
                 }
@@ -40,7 +40,7 @@ function Home() {
     }
 
     const handleDelete = (id) => {
-        axios.delete(`http://localhost:8000/task/${id}`, {
+        axios.delete(`https://mytodo-ass.onrender.com/task/${id}`, {
         headers: {
         Authorization: `Bearer ${token}`
         }

@@ -15,7 +15,7 @@ function AuthUser({ onAuthSuccess }) {
 
         try {
             const endpoint = isLogin ? "/login" : "/signup";
-            const res = await fetch(`http://localhost:8000${endpoint}`, {
+            const res = await fetch(`https://mytodo-ass.onrender.com/${endpoint}`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(form),

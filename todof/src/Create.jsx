@@ -10,7 +10,7 @@ function Create({ setTodo }) {
         const token = localStorage.getItem("token");
 
         axios.post(
-            "http://localhost:8000/task",
+            "https://mytodo-ass.onrender.com/task",
             { input }, 
 
             {
