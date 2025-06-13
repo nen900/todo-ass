@@ -1,0 +1,58 @@
+body {
+  background-color: rebeccapurple;
+}
+
+.titleblock {
+  text-align: center;
+  color: #000;
+}
+
+.home {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.create_task {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.task {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  width: 500px; 
+  background-color: rgb(53, 31, 58);
+  border-radius: 10px;
+  margin: 8px;
+  padding: 10px;
+  color: white;
+}
+
+.create_task input {
+  width: 500px;
+  padding: 10px;
+  outline: none;
+}
+
+.create_task button {
+  padding: 20px;
+  background-color: rgb(236, 184, 237);
+  color: black;
+  border-radius: 15px;
+}
+
+.checked {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

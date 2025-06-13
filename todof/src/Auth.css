@@ -1,0 +1,44 @@
+
+
+.details-bg {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rebeccapurple;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.details {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.details input {
+    padding: 10px;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+}
+
+.toggle {
+    color: rgb(74, 170, 255);
+    cursor: pointer;
+    text-align: center;
+}
+
+button{
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    height: 50px;
+    background-color: rgb(236, 184, 237);
+    justify-content: center;
+}
