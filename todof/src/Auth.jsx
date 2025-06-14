@@ -5,7 +5,7 @@ import "./Auth.css";
 
 function AuthUser({ onAuthSuccess }) {
     const [isLogin, setIsLogin] = useState(true);
-    const [form, setForm] = useState({ username: "", password: "" });
+    const [form, setForm] = useState({ email: "", password: "" });
     const [error, setError] = useState("");
 
     const handleSubmit = async () => {
