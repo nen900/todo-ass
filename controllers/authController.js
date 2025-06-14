@@ -1,15 +1,14 @@
 const USER = require("../models/userShema");
 const jwt = require("jsonwebtoken");
 const encrypt = require("bcrypt");
-const judge = require("validator");
-
+const validator = require("validator"); 
 
 const createUser = async (req, res) => {
     try {
         const { email } = req.body;
 
-        if (!judge.isEmail(email)) {
-            return res.status(400).json({ message: " not a valid email, please recheck" });
+        if (!validator.isEmail(email)) {
+            return res.status(400).json({ message: "Not a valid email, please recheck." });
         }
 
         const existinguser = await USER.findOne({ email });
@@ -38,3 +37,40 @@ const createUser = async (req, res) => {
         res.status(500).json({ message: "Signup failed. Please try again." });
     }
 };
+
+const loginUser = async (req, res) => {
+    const { email, password } = req.body;
+
+    try {
+        const user = await USER.findOne({ email });
+
+        if (!user) {
+            return res.status(400).json({ message: "Invalid email! Please try signing up if you're new." });
+        }
+
+        const checkPassword = await encrypt.compare(password, user.password);
+
+        if (!checkPassword) {
+            return res.status(400).json({ message: "Incorrect password" });
+        }
+
+        const token = jwt.sign(
+            { id: user._id, email: user.email },
+            process.env.JWT_KEY,
+            { expiresIn: "1d" }
+        );
+
+        res.status(200).json({
+            user: {
+                id: user._id,
+                email: user.email,
+                username: user.username
+            },
+            token
+        });
+    } catch (error) {
+        res.status(500).json({ message: "Login failed. Please try again." });
+    }
+};
+
+module.exports = { createUser, loginUser };
