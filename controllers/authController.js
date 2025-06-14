@@ -34,6 +34,7 @@ const createUser = async (req, res) => {
             token
         });
     } catch (error) {
+        console.error("Signup Error:", error); 
         res.status(500).json({ message: "Signup failed. Please try again." });
     }
 };
