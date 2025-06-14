@@ -17,7 +17,11 @@ const createUser = async (req, res) => {
             return res.status(409).json({ errors: { email: "Already an account with this email." } });
         }
 
-        const newUser = await USER.create(req.body);
+        const { email, password } = req.body;
+        console.log("SIGNUP PAYLOAD:", req.body);
+
+        const newUser = await USER.create({ email, password });
+
 
         const token = jwt.sign(
             { id: newUser._id, email: newUser.email },
