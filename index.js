@@ -17,7 +17,9 @@ const authenticateusr = require("./middleware/authMiddleware");
 const mongoose = require("mongoose");
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: " https://mytodo-ass.netlify.app/ " 
+}));
 
 mongoose.connect(db, {})
     .then(() => {
