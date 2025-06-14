@@ -8,6 +8,13 @@ const port = 8000;
 const db = process.env.mongodb_url;
 const express = require("express");
 const app = express();
+
+app.use(cors({
+    origin: "https://mytodo-ass.netlify.app", 
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"]
+}))
+
 const authRouthes = require("./routes/auth");
 const taskRoutes = require("./routes/tasks");
 const cors = require("cors");
@@ -17,9 +24,8 @@ const authenticateusr = require("./middleware/authMiddleware");
 const mongoose = require("mongoose");
 
 app.use(express.json());
-app.use(cors({
-  origin: " https://mytodo-ass.netlify.app/ " 
-}));
+
+
 
 mongoose.connect(db, {})
     .then(() => {
