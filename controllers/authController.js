@@ -5,7 +5,9 @@ const validator = require("validator");
 
 const createUser = async (req, res) => {
     try {
-        const { email } = req.body;
+        
+        const { email, password } = req.body;
+        console.log("SIGNUP PAYLOAD:", req.body);
 
         if (!validator.isEmail(email)) {
             return res.status(400).json({ message: "Not a valid email, please recheck." });
@@ -16,9 +18,6 @@ const createUser = async (req, res) => {
         if (existinguser) {
             return res.status(409).json({ errors: { email: "Already an account with this email." } });
         }
-
-        const { email, password } = req.body;
-        console.log("SIGNUP PAYLOAD:", req.body);
 
         const newUser = await USER.create({ email, password });
 
@@ -33,7 +32,7 @@ const createUser = async (req, res) => {
             user: {
                 id: newUser._id,
                 email: newUser.email,
-                username: newUser.username
+                // username: newUser.username
             },
             token
         });
@@ -69,7 +68,7 @@ const loginUser = async (req, res) => {
             user: {
                 id: user._id,
                 email: user.email,
-                username: user.username
+                // username: user.username
             },
             token
         });
