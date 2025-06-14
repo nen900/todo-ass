@@ -1,5 +1,6 @@
 const USER = require("../models/userShema");
 const jwt = require("jsonwebtoken");
+const encrypt = require("bcrypt");
 const judge = require("validator");
 
 
