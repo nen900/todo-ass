@@ -1,3 +1,8 @@
+const USER = require("../models/userShema");
+const jwt = require("jsonwebtoken");
+const judge = require("validator");
+
+
 const createUser = async (req, res) => {
     try {
         const { email } = req.body;
